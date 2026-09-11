@@ -86,34 +86,44 @@
       </div>
     </div>
 
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hero-shape"></div>
-      <svg viewBox="0 0 420 480" class="hero-illustration" role="img" aria-label="Physiotherapy movement illustration">
-        <defs>
-          <linearGradient id="gGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#3E8E86"/>
-            <stop offset="100%" stop-color="#14324A"/>
-          </linearGradient>
-        </defs>
-        <circle cx="210" cy="150" r="150" fill="url(#gGrad)" opacity="0.12"/>
-        <g stroke="#14324A" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <!-- simple abstract figure in motion -->
-          <circle cx="228" cy="120" r="26" fill="#EFF3F5" stroke="#14324A"/>
-          <path d="M228 146 L214 230 L170 280"/>
-          <path d="M214 230 L262 268"/>
-          <path d="M214 190 L160 210"/>
-          <path d="M214 190 L256 160"/>
-          <path d="M170 280 L150 340"/>
-          <path d="M262 268 L288 330"/>
-        </g>
-        <g stroke="#3E8E86" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.55">
-          <path d="M60 340 Q120 300 180 340 T300 340"/>
-          <path d="M40 380 Q120 350 200 380 T360 380"/>
-        </g>
-      </svg>
+    <div class="hero-visual">
+      <div class="hero-shape" aria-hidden="true"></div>
+      <div class="hero-photo-frame">
+        <img
+          src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=1000&q=80"
+          srcset="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=600&q=80 600w,
+                  https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=1000&q=80 1000w"
+          sizes="(max-width: 980px) 90vw, 480px"
+          alt="A physiotherapist assessing a patient's leg movement during a treatment session"
+          class="hero-photo"
+          width="1000" height="1200"
+          loading="eager">
+      </div>
     </div>
   </div>
 </section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust-strip">
+  <div class="section-inner trust-strip-inner">
+    <div class="trust-item">
+      <span class="trust-icon" data-icon="personalized"></span>
+      <span>Personalized Care</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon" data-icon="rehab"></span>
+      <span>Rehabilitation Focus</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon" data-icon="location"></span>
+      <span>Goregaon West Location</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon" data-icon="whatsapp-strip"></span>
+      <span>Easy WhatsApp Booking</span>
+    </div>
+  </div>
+</div>
 
 <!-- ============ ABOUT ============ -->
 <section class="about" id="about">
@@ -202,16 +212,16 @@
     <h2 class="section-title">Conditions we help with</h2>
 
     <div class="chip-grid">
-      <span class="chip">Back Pain</span>
-      <span class="chip">Neck Pain</span>
-      <span class="chip">Shoulder Pain</span>
-      <span class="chip">Frozen Shoulder</span>
-      <span class="chip">Osteoarthritis</span>
-      <span class="chip">Sports Injuries</span>
-      <span class="chip">Post-Surgical Recovery</span>
-      <span class="chip">Neurological Conditions</span>
-      <span class="chip">Stroke Rehabilitation</span>
-      <span class="chip">Mobility Problems</span>
+      <span class="chip"><span class="chip-icon" data-icon="back"></span>Back Pain</span>
+      <span class="chip"><span class="chip-icon" data-icon="neck"></span>Neck Pain</span>
+      <span class="chip"><span class="chip-icon" data-icon="shoulder"></span>Shoulder Pain</span>
+      <span class="chip"><span class="chip-icon" data-icon="shoulder"></span>Frozen Shoulder</span>
+      <span class="chip"><span class="chip-icon" data-icon="joint"></span>Osteoarthritis</span>
+      <span class="chip"><span class="chip-icon" data-icon="sports"></span>Sports Injuries</span>
+      <span class="chip"><span class="chip-icon" data-icon="postsurgical"></span>Post-Surgical Recovery</span>
+      <span class="chip"><span class="chip-icon" data-icon="neuro"></span>Neurological Conditions</span>
+      <span class="chip"><span class="chip-icon" data-icon="stroke"></span>Stroke Rehabilitation</span>
+      <span class="chip"><span class="chip-icon" data-icon="mobility"></span>Mobility Problems</span>
     </div>
 
     <div class="conditions-cta">
@@ -323,32 +333,66 @@
   </div>
 </section>
 
-<!-- ============ CONTACT FORM ============ -->
+<!-- ============ APPOINTMENT (HOURS + FORM) ============ -->
 <section class="contact" id="contact">
-  <div class="section-inner contact-inner">
+  <div class="section-inner">
     <p class="eyebrow eyebrow-center">Request an appointment</p>
-    <h2 class="section-title">Tell us a little about your visit</h2>
+    <h2 class="section-title section-title-center">Plan your visit</h2>
 
-    <form class="contact-form" id="contactForm">
-      <div class="form-row">
-        <label for="cf-name">Name</label>
-        <input type="text" id="cf-name" name="name" required placeholder="Your full name">
+    <div class="appointment-grid">
+      <div class="hours-card">
+        <div class="hours-card-head">
+          <span class="hours-icon" data-icon="clock"></span>
+          <h3>Clinic Hours</h3>
+        </div>
+
+        <ul class="hours-list">
+          <li><span>Monday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Tuesday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Wednesday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Thursday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Friday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Saturday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Sunday</span><span class="hours-value">Add clinic timing</span></li>
+        </ul>
+
+        <div class="hours-help">
+          <p>Need help choosing a convenient time?</p>
+          <a href="https://wa.me/919869521900?text=Hello%20Dr.%20Vijaya%2C%20I%20would%20like%20to%20know%20a%20convenient%20time%20for%20an%20appointment." class="btn btn-primary btn-full" target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+
+        <div class="hours-meta">
+          <p><span class="hours-meta-label">Phone</span><a href="tel:+919869521900">+91 98695 21900</a></p>
+          <p><span class="hours-meta-label">Location</span><span>Goregaon West, Mumbai</span></p>
+        </div>
       </div>
-      <div class="form-row">
-        <label for="cf-phone">Phone Number</label>
-        <input type="tel" id="cf-phone" name="phone" required placeholder="10-digit mobile number">
+
+      <div class="form-card">
+        <h3>Request an Appointment</h3>
+        <p class="form-card-sub">Tell us a little about your visit and our clinic can get back to you.</p>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required placeholder="Your full name">
+          </div>
+          <div class="form-row">
+            <label for="cf-phone">Phone Number</label>
+            <input type="tel" id="cf-phone" name="phone" required placeholder="10-digit mobile number">
+          </div>
+          <div class="form-row">
+            <label for="cf-date">Preferred Date</label>
+            <input type="date" id="cf-date" name="date">
+          </div>
+          <div class="form-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Briefly describe your condition or concern"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Request Appointment</button>
+          <p class="form-note" id="formNote"></p>
+        </form>
       </div>
-      <div class="form-row">
-        <label for="cf-date">Preferred Date</label>
-        <input type="date" id="cf-date" name="date">
-      </div>
-      <div class="form-row">
-        <label for="cf-message">Message</label>
-        <textarea id="cf-message" name="message" rows="4" placeholder="Briefly describe your condition or concern"></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary btn-full">Request Appointment</button>
-      <p class="form-note" id="formNote"></p>
-    </form>
+    </div>
   </div>
 </section>
 
