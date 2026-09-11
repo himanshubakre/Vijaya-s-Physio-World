@@ -1,815 +1,454 @@
-/* ==========================================================================
-   Vijaya's Physio World — Design tokens
-   ========================================================================== */
-:root {
-  --navy: #14324A;
-  --navy-deep: #0D2333;
-  --teal: #3E8E86;
-  --teal-deep: #2E6B65;
-  --teal-tint: #E3F0EE;
-  --bg: #F4F7F8;
-  --surface: #FFFFFF;
-  --ink: #1B2A32;
-  --ink-soft: #55666E;
-  --ink-faint: #8397A0;
-  --border: #E0E7E9;
-  --sand: #C7975B;
-  --sand-tint: #F6EDE1;
-
-  --font-display: 'Fraunces', 'Georgia', serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-  --radius-s: 10px;
-  --radius-m: 16px;
-  --radius-l: 28px;
-
-  --shadow-card: 0 1px 2px rgba(20, 50, 74, 0.05), 0 8px 24px rgba(20, 50, 74, 0.06);
-  --shadow-lift: 0 12px 32px rgba(20, 50, 74, 0.12);
-
-  --container: 1160px;
-}
-
-* { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-}
-
-body {
-  margin: 0;
-  font-family: var(--font-body);
-  color: var(--ink);
-  background: var(--bg);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-img, svg { max-width: 100%; display: block; }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-h1, h2, h3 {
-  font-family: var(--font-display);
-  color: var(--navy);
-  margin: 0 0 0.5em;
-  line-height: 1.15;
-  font-weight: 500;
-}
-
-p { margin: 0 0 1em; color: var(--ink-soft); }
-
-.section-inner {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--teal-deep);
-  font-weight: 600;
-  margin-bottom: 0.6em;
-}
-
-.eyebrow-center { text-align: center; }
-
-.section-title {
-  max-width: 640px;
-  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
-}
-
-section {
-  padding: 88px 0;
-}
-
-/* Focus visibility */
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 2px solid var(--teal);
-  outline-offset: 3px;
-}
-
-/* ==========================================================================
-   Buttons
-   ========================================================================== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 26px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.98rem;
-  border: 1.5px solid transparent;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
-  white-space: nowrap;
-}
-
-.btn-primary {
-  background: var(--navy);
-  color: #fff;
-}
-.btn-primary:hover { background: var(--navy-deep); box-shadow: var(--shadow-lift); }
-
-.btn-primary-inverse {
-  background: #fff;
-  color: var(--navy);
-}
-.btn-primary-inverse:hover { box-shadow: var(--shadow-lift); transform: translateY(-1px); }
-
-.btn-outline {
-  background: transparent;
-  border-color: var(--navy);
-  color: var(--navy);
-}
-.btn-outline:hover { background: var(--navy); color: #fff; }
-
-.btn-outline-inverse {
-  background: transparent;
-  border-color: rgba(255,255,255,0.6);
-  color: #fff;
-}
-.btn-outline-inverse:hover { background: rgba(255,255,255,0.15); }
-
-.btn-small { padding: 10px 20px; font-size: 0.88rem; }
-.btn-full { width: 100%; }
-
-/* ==========================================================================
-   Header / Nav
-   ========================================================================== */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 500;
-  background: rgba(244, 247, 248, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-
-.header-inner {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 14px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-display);
-  font-size: 1.08rem;
-  color: var(--navy);
-}
-
-.brand-mark {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--navy);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  flex-shrink: 0;
-}
-
-.main-nav {
-  display: flex;
-  gap: 30px;
-}
-
-.main-nav a {
-  font-size: 0.96rem;
-  font-weight: 500;
-  color: var(--ink);
-  position: relative;
-  padding: 4px 0;
-}
-.main-nav a:hover { color: var(--teal-deep); }
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 40px;
-  height: 40px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-.nav-toggle span {
-  display: block;
-  height: 2px;
-  width: 22px;
-  background: var(--navy);
-  margin: 0 auto;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* ==========================================================================
-   Hero
-   ========================================================================== */
-.hero {
-  padding: 72px 0 96px;
-  background: linear-gradient(180deg, #F8FAFA 0%, var(--bg) 100%);
-}
-
-.hero-inner {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.hero-eyebrow {
-  font-weight: 600;
-  color: var(--teal-deep);
-  font-size: 0.95rem;
-  margin-bottom: 14px;
-}
-
-.hero h1 {
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-.hero-accent { color: var(--teal); font-style: italic; }
-
-.hero-sub {
-  font-size: 1.1rem;
-  max-width: 480px;
-  margin-top: 18px;
-}
-
-.hero-doctor-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-m);
-  padding: 14px 18px;
-  margin: 24px 0 30px;
-  max-width: 400px;
-  box-shadow: var(--shadow-card);
-}
-
-.hero-doctor-initial {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--teal-tint);
-  color: var(--teal-deep);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  flex-shrink: 0;
-}
-
-.hero-doctor-card strong { display: block; color: var(--navy); font-size: 1rem; }
-.hero-doctor-card span { display: block; font-size: 0.88rem; color: var(--ink-soft); }
-
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.hero-visual {
-  position: relative;
-}
-
-.hero-shape {
-  position: absolute;
-  inset: -10% -6%;
-  background: radial-gradient(circle at 70% 30%, var(--teal-tint), transparent 60%);
-  border-radius: 50%;
-  z-index: 0;
-}
-
-.hero-illustration {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: auto;
-}
-
-/* ==========================================================================
-   About
-   ========================================================================== */
-.about { background: var(--surface); }
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
-  gap: 64px;
-  align-items: center;
-}
-
-.about-visual { position: relative; }
-
-.about-photo-placeholder {
-  aspect-ratio: 4/5;
-  border-radius: var(--radius-l);
-  background: linear-gradient(155deg, var(--teal-tint) 0%, #EFF6F4 60%, var(--sand-tint) 100%);
-  border: 1px dashed var(--teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--teal-deep);
-  font-size: 0.92rem;
-  padding: 20px;
-}
-
-.about-badge {
-  position: absolute;
-  left: -20px;
-  bottom: -20px;
-  background: var(--navy);
-  color: #fff;
-  border-radius: var(--radius-m);
-  padding: 14px 20px;
-  box-shadow: var(--shadow-lift);
-}
-.about-badge strong { display: block; font-family: var(--font-display); font-size: 1.02rem; }
-.about-badge span { display: block; font-size: 0.82rem; color: rgba(255,255,255,0.75); }
-
-.about-copy h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
-
-.about-line {
-  margin-top: 22px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border);
-}
-.about-line-label {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: var(--navy);
-  font-style: italic;
-}
-
-/* ==========================================================================
-   Services
-   ========================================================================== */
-.services-grid {
-  margin-top: 46px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.service-card {
-  background: var(--surface);
-  border-radius: var(--radius-m);
-  padding: 28px 26px;
-  border-left: 3px solid var(--teal);
-  box-shadow: var(--shadow-card);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-.service-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lift);
-}
-
-.service-card h3 {
-  font-size: 1.08rem;
-  margin-bottom: 0.4em;
-}
-.service-card p { font-size: 0.94rem; margin-bottom: 0; }
-
-.service-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: var(--teal-tint);
-  margin-bottom: 16px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 22px;
-}
-
-/* icon glyphs via inline SVG data-uris, keyed by data-icon */
-.service-icon[data-icon="sports"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6B65' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 3v18M3 12h18'/%3E%3C/svg%3E"); }
-.service-icon[data-icon="postsurgical"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6B65' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 12h12M9 6l-3 6 3 6M15 6l3 6-3 6'/%3E%3C/svg%3E"); }
-.service-icon[data-icon="neuro"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6B65' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='7' r='3'/%3E%3Cpath d='M12 10v4M8 21l4-7 4 7'/%3E%3C/svg%3E"); }
-.service-icon[data-icon="stroke"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6B65' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M3 12h4l3-8 4 16 3-8h4'/%3E%3C/svg%3E"); }
-.service-icon[data-icon="shoulder"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6B65' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='9' cy='6' r='2.5'/%3E%3Cpath d='M9 8.5v5M9 13.5l-4 7M9 13.5l6 1 3 6'/%3E%3C/svg%3E"); }
-.service-icon[data-icon="joint"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6B65' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4'/%3E%3Cpath d='M12 2v6M12 16v6M2 12h6M16 12h6'/%3E%3C/svg%3E"); }
-.service-icon[data-icon="neck"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6B65' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='5' r='3'/%3E%3Cpath d='M12 8v4c0 3 2 5 5 6'/%3E%3C/svg%3E"); }
-.service-icon[data-icon="tape"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6B65' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M4 4l16 16M4 12l8 8M12 4l8 8'/%3E%3C/svg%3E"); }
-.service-icon[data-icon="mobility"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232E6B65' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/svg%3E"); }
-
-/* ==========================================================================
-   Conditions
-   ========================================================================== */
-.conditions { background: var(--surface); }
-
-.chip-grid {
-  margin-top: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-}
-
-.chip {
-  padding: 11px 20px;
-  border-radius: 999px;
-  background: var(--teal-tint);
-  color: var(--teal-deep);
-  font-weight: 500;
-  font-size: 0.94rem;
-}
-
-.conditions-cta {
-  text-align: center;
-  margin-top: 40px;
-}
-
-/* ==========================================================================
-   Why choose us
-   ========================================================================== */
-.why-grid {
-  margin-top: 46px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.why-card {
-  background: var(--surface);
-  border-radius: var(--radius-m);
-  padding: 30px 26px;
-  border: 1px solid var(--border);
-}
-.why-card:nth-child(4), .why-card:nth-child(5) {
-  background: var(--navy);
-  border-color: var(--navy);
-}
-.why-card:nth-child(4) h3, .why-card:nth-child(5) h3 { color: #fff; }
-.why-card:nth-child(4) p, .why-card:nth-child(5) p { color: rgba(255,255,255,0.78); }
-
-.why-card h3 { font-size: 1.06rem; }
-.why-card p { font-size: 0.94rem; margin-bottom: 0; }
-
-/* ==========================================================================
-   Reviews
-   ========================================================================== */
-.reviews-sub {
-  text-align: center;
-  font-weight: 600;
-  color: var(--teal-deep);
-  margin-top: -8px;
-}
-
-.reviews-grid {
-  margin-top: 40px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.review-card {
-  background: var(--surface);
-  border: 1px dashed var(--border);
-  border-radius: var(--radius-m);
-  padding: 30px 26px;
-  text-align: center;
-  color: var(--ink-faint);
-}
-.review-quote-mark {
-  font-family: var(--font-display);
-  font-size: 2.4rem;
-  color: var(--teal);
-  opacity: 0.5;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.review-card p { color: var(--ink-faint); font-style: italic; margin-bottom: 0; }
-
-.reviews-cta { text-align: center; margin-top: 36px; }
-
-/* ==========================================================================
-   Appointment CTA band
-   ========================================================================== */
-.appointment-cta {
-  background: var(--navy);
-  color: #fff;
-  padding: 80px 0;
-}
-.appointment-inner {
-  text-align: center;
-  max-width: 620px;
-}
-.appointment-cta h2 {
-  color: #fff;
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
-}
-.appointment-cta p {
-  color: rgba(255,255,255,0.8);
-  font-size: 1.05rem;
-}
-.appointment-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  margin-top: 26px;
-  flex-wrap: wrap;
-}
-
-/* ==========================================================================
-   Location
-   ========================================================================== */
-.location { background: var(--surface); }
-
-.location-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
-}
-
-.location-address {
-  font-size: 1.02rem;
-  color: var(--ink);
-}
-.location-phone a {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  color: var(--teal-deep);
-}
-.location-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 24px;
-}
-
-.location-map {
-  border-radius: var(--radius-l);
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  aspect-ratio: 4/3.4;
-}
-.location-map iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-/* ==========================================================================
-   Contact form
-   ========================================================================== */
-.contact-inner { max-width: 640px; }
-
-.contact-form {
-  margin-top: 40px;
-  background: var(--surface);
-  border-radius: var(--radius-l);
-  padding: 36px;
-  box-shadow: var(--shadow-card);
-}
-
-.form-row { margin-bottom: 18px; }
-.form-row label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 8px;
-}
-.form-row input, .form-row textarea {
-  width: 100%;
-  padding: 13px 16px;
-  border-radius: var(--radius-s);
-  border: 1px solid var(--border);
-  background: var(--bg);
-  font-family: var(--font-body);
-  font-size: 0.98rem;
-  color: var(--ink);
-  resize: vertical;
-}
-.form-row input:focus, .form-row textarea:focus {
-  outline: none;
-  border-color: var(--teal);
-  background: #fff;
-}
-
-.form-note {
-  margin-top: 14px;
-  font-size: 0.9rem;
-  color: var(--teal-deep);
-  text-align: center;
-  min-height: 1.2em;
-}
-
-/* ==========================================================================
-   Footer
-   ========================================================================== */
-.site-footer {
-  background: var(--navy-deep);
-  color: rgba(255,255,255,0.85);
-  padding: 64px 0 0;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 40px;
-  padding-bottom: 48px;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-}
-
-.footer-brand {
-  display: flex;
-  gap: 14px;
-}
-.footer-brand strong {
-  font-family: var(--font-display);
-  color: #fff;
-  font-size: 1.1rem;
-  display: block;
-  margin-bottom: 6px;
-}
-.footer-brand p { color: rgba(255,255,255,0.6); font-size: 0.9rem; margin: 0; }
-
-.footer-links h4, .footer-contact h4 {
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  text-transform: none;
-  margin-bottom: 16px;
-}
-.footer-links a, .footer-contact a {
-  display: block;
-  color: rgba(255,255,255,0.65);
-  font-size: 0.94rem;
-  margin-bottom: 10px;
-}
-.footer-links a:hover, .footer-contact a:hover { color: #fff; }
-.footer-contact p { color: rgba(255,255,255,0.65); font-size: 0.94rem; margin-bottom: 14px; }
-.footer-contact .btn { margin-top: 4px; }
-
-.footer-bottom {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 22px 24px 100px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 0.86rem;
-  color: rgba(255,255,255,0.5);
-}
-.footer-credit a { color: rgba(255,255,255,0.7); font-weight: 500; }
-.footer-credit a:hover { color: #fff; }
-
-/* ==========================================================================
-   Sticky mobile action bar + floating WhatsApp
-   ========================================================================== */
-.mobile-action-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 600;
-  display: none;
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  box-shadow: 0 -6px 20px rgba(20,50,74,0.08);
-}
-.mobile-action-bar a {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 10px 0 12px;
-  font-size: 0.76rem;
-  font-weight: 600;
-  color: var(--navy);
-}
-.mab-icon {
-  width: 20px;
-  height: 20px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-}
-.mab-icon[data-icon="whatsapp"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233E8E86'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1s-.7.8-.9 1c-.2.2-.3.2-.6.1a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.5c.1-.1.2-.3.2-.4a.5.5 0 0 0 0-.5c-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3 1 2.6 1.1 2.8.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6a3.8 3.8 0 0 0 1.8.1c.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z'/%3E%3C/svg%3E"); }
-.mab-icon[data-icon="call"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314324A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.4c1 .3 2 .5 3 .7a2 2 0 0 1 1.6 2z'/%3E%3C/svg%3E"); }
-.mab-icon[data-icon="directions"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2314324A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 11l18-8-8 18-2-8-8-2z'/%3E%3C/svg%3E"); }
-
-.floating-whatsapp {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  z-index: 600;
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: var(--shadow-lift);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.15s ease;
-}
-.floating-whatsapp:hover { transform: scale(1.06); }
-.floating-whatsapp .mab-icon { width: 28px; height: 28px; }
-
-/* ==========================================================================
-   Responsive
-   ========================================================================== */
-@media (max-width: 980px) {
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-visual { order: -1; max-width: 320px; margin: 0 auto; }
-  .about-grid { grid-template-columns: 1fr; gap: 60px; }
-  .about-visual { max-width: 340px; margin: 0 auto; }
-  .services-grid, .why-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-  .location-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .footer-brand { grid-column: 1 / -1; }
-}
-
-@media (max-width: 720px) {
-  .main-nav { 
-    position: fixed;
-    top: 68px;
-    left: 0;
-    right: 0;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    flex-direction: column;
-    gap: 0;
-    padding: 8px 24px 16px;
-    transform: translateY(-8px);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vijaya's Physio World | Physiotherapy &amp; Rehabilitation in Goregaon West</title>
+<meta name="description" content="Vijaya's Physio World offers physiotherapy and rehabilitation care in Goregaon West, Mumbai. Contact Dr. Vijaya Pawar for appointments and rehabilitation support.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Vijaya's Physio World | Physiotherapy & Rehabilitation in Goregaon West">
+<meta property="og:description" content="Personalized physiotherapy and rehabilitation care in Goregaon West, Mumbai.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Structured data: only factual, supplied information -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "PhysicalTherapy",
+  "name": "Vijaya's Physio World",
+  "image": "",
+  "telephone": "+919869521900",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15/113, Unnat Nagar No. 3, Mahatma Gandhi Road",
+    "addressLocality": "Goregaon West, Mumbai",
+    "addressRegion": "MH",
+    "postalCode": "400104",
+    "addressCountry": "IN"
   }
-  .main-nav.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
-  }
-  .main-nav a {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-toggle { display: flex; }
-  .header-actions .btn-small { display: none; }
-
-  section { padding: 64px 0; }
-
-  .services-grid, .why-grid, .reviews-grid { grid-template-columns: 1fr; }
-
-  .about-badge { left: 50%; transform: translateX(-50%); bottom: -18px; text-align: center; }
-
-  .footer-grid { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; text-align: center; padding-bottom: 110px; }
-
-  .mobile-action-bar { display: flex; }
-  .floating-whatsapp { bottom: 82px; right: 16px; width: 52px; height: 52px; }
-  body { padding-bottom: 0; }
 }
+</script>
+</head>
+<body>
 
-@media (max-width: 420px) {
-  .hero-doctor-card { max-width: 100%; }
-  .hero-actions .btn, .appointment-actions .btn { width: 100%; }
-  .hero-actions, .appointment-actions { flex-direction: column; }
-}
+<!-- ============ HEADER / NAV ============ -->
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">VP</span>
+      <span class="brand-text">Vijaya's Physio World</span>
+    </a>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#conditions">Conditions</a>
+      <a href="#why">Why Choose Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://wa.me/919869521900?text=Hello%20Dr.%20Vijaya%2C%20I%20would%20like%20to%20book%20an%20appointment." class="btn btn-primary btn-small" target="_blank" rel="noopener">Book Appointment</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Goregaon West, Mumbai</p>
+      <h1>Move better.<br>Feel stronger.<br><span class="hero-accent">Live better.</span></h1>
+      <p class="hero-sub">Personalized physiotherapy and rehabilitation care in Goregaon West, Mumbai — focused on pain relief, recovery, mobility and functional movement.</p>
+
+      <div class="hero-doctor-card">
+        <div class="hero-doctor-initial">VP</div>
+        <div>
+          <strong>Dr. Vijaya Pawar</strong>
+          <span>Physiotherapy &amp; Rehabilitation Care</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="https://wa.me/919869521900?text=Hello%20Dr.%20Vijaya%2C%20I%20would%20like%20to%20book%20an%20appointment." class="btn btn-primary" target="_blank" rel="noopener">Book Appointment</a>
+        <a href="tel:+919869521900" class="btn btn-outline">Call +91 98695 21900</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-shape" aria-hidden="true"></div>
+      <div class="hero-photo-frame">
+        <img
+          src="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=1000&q=80"
+          srcset="https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=600&q=80 600w,
+                  https://images.unsplash.com/photo-1649751361457-01d3a696c7e6?auto=format&fit=crop&w=1000&q=80 1000w"
+          sizes="(max-width: 980px) 90vw, 480px"
+          alt="A physiotherapist assessing a patient's leg movement during a treatment session"
+          class="hero-photo"
+          width="1000" height="1200"
+          loading="eager">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust-strip">
+  <div class="section-inner trust-strip-inner">
+    <div class="trust-item">
+      <span class="trust-icon" data-icon="personalized"></span>
+      <span>Personalized Care</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon" data-icon="rehab"></span>
+      <span>Rehabilitation Focus</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon" data-icon="location"></span>
+      <span>Goregaon West Location</span>
+    </div>
+    <div class="trust-item">
+      <span class="trust-icon" data-icon="whatsapp-strip"></span>
+      <span>Easy WhatsApp Booking</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="section-inner about-grid">
+    <div class="about-visual">
+      <div class="about-photo-placeholder">
+        <span>Dr. Vijaya Pawar's<br>photograph<br>can go here</span>
+      </div>
+      <div class="about-badge">
+        <strong>Dr. Vijaya Pawar</strong>
+        <span>Physiotherapy &amp; Rehabilitation</span>
+      </div>
+    </div>
+    <div class="about-copy">
+      <p class="eyebrow">About the clinic</p>
+      <h2>Personalized care for your recovery</h2>
+      <p>Every patient's recovery journey is different. At Vijaya's Physio World, physiotherapy and rehabilitation are focused on understanding the individual's condition, improving movement, managing pain and supporting a safe return to everyday activities.</p>
+      <p>The clinic is led by Dr. Vijaya Pawar, with extensive clinical experience in physiotherapy and rehabilitation, serving patients from Goregaon West and the surrounding Mumbai suburbs.</p>
+      <div class="about-line">
+        <span class="about-line-label">Years of Clinical Experience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <p class="eyebrow eyebrow-center">What we offer</p>
+    <h2 class="section-title">Physiotherapy &amp; rehabilitation services</h2>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon" data-icon="sports"></div>
+        <h3>Sports Injury Rehabilitation</h3>
+        <p>Structured physiotherapy support to help restore movement, strength and function following sports-related injuries.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" data-icon="postsurgical"></div>
+        <h3>Post-Surgical Rehabilitation</h3>
+        <p>Guided recovery physiotherapy to help rebuild strength and mobility safely after surgery.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" data-icon="neuro"></div>
+        <h3>Neurological Rehabilitation</h3>
+        <p>Physiotherapy support for patients managing neurological conditions affecting movement and coordination.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" data-icon="stroke"></div>
+        <h3>Stroke Rehabilitation</h3>
+        <p>Focused rehabilitation aimed at helping stroke patients regain function and independence over time.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" data-icon="shoulder"></div>
+        <h3>Frozen Shoulder</h3>
+        <p>Assessment and physiotherapy treatment aimed at easing stiffness and restoring shoulder mobility.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" data-icon="joint"></div>
+        <h3>Osteoarthritis Care</h3>
+        <p>Physiotherapy approaches to support joint function and manage discomfort associated with osteoarthritis.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" data-icon="neck"></div>
+        <h3>Neck &amp; Musculoskeletal Pain</h3>
+        <p>Treatment focused on relieving neck and musculoskeletal pain and improving day-to-day movement.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" data-icon="tape"></div>
+        <h3>Therapeutic Taping</h3>
+        <p>Supportive taping techniques used alongside treatment to aid movement and recovery.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon" data-icon="mobility"></div>
+        <h3>Mobility &amp; Functional Rehabilitation</h3>
+        <p>Rehabilitation focused on functional movement, balance and returning to everyday activity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONDITIONS ============ -->
+<section class="conditions" id="conditions">
+  <div class="section-inner">
+    <p class="eyebrow eyebrow-center">Conditions</p>
+    <h2 class="section-title">Conditions we help with</h2>
+
+    <div class="chip-grid">
+      <span class="chip"><span class="chip-icon" data-icon="back"></span>Back Pain</span>
+      <span class="chip"><span class="chip-icon" data-icon="neck"></span>Neck Pain</span>
+      <span class="chip"><span class="chip-icon" data-icon="shoulder"></span>Shoulder Pain</span>
+      <span class="chip"><span class="chip-icon" data-icon="shoulder"></span>Frozen Shoulder</span>
+      <span class="chip"><span class="chip-icon" data-icon="joint"></span>Osteoarthritis</span>
+      <span class="chip"><span class="chip-icon" data-icon="sports"></span>Sports Injuries</span>
+      <span class="chip"><span class="chip-icon" data-icon="postsurgical"></span>Post-Surgical Recovery</span>
+      <span class="chip"><span class="chip-icon" data-icon="neuro"></span>Neurological Conditions</span>
+      <span class="chip"><span class="chip-icon" data-icon="stroke"></span>Stroke Rehabilitation</span>
+      <span class="chip"><span class="chip-icon" data-icon="mobility"></span>Mobility Problems</span>
+    </div>
+
+    <div class="conditions-cta">
+      <a href="https://wa.me/919869521900?text=Hello%20Dr.%20Vijaya%2C%20I%20would%20like%20to%20know%20more%20about%20physiotherapy%20treatment%20for%20my%20condition." class="btn btn-primary" target="_blank" rel="noopener">Discuss Your Condition</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <p class="eyebrow eyebrow-center">Why patients choose us</p>
+    <h2 class="section-title">Care built around your recovery</h2>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Personalized Treatment</h3>
+        <p>Care focused on your individual condition, goals and recovery needs.</p>
+      </div>
+      <div class="why-card">
+        <h3>Rehabilitation-Focused Approach</h3>
+        <p>Support that goes beyond temporary pain relief and focuses on restoring movement and function.</p>
+      </div>
+      <div class="why-card">
+        <h3>Experienced Clinical Care</h3>
+        <p>Led by Dr. Vijaya Pawar with extensive clinical experience in physiotherapy and rehabilitation.</p>
+      </div>
+      <div class="why-card">
+        <h3>Convenient Goregaon West Location</h3>
+        <p>Easily accessible clinic location in Unnat Nagar, Goregaon West.</p>
+      </div>
+      <div class="why-card">
+        <h3>Patient-Centered Guidance</h3>
+        <p>Clear guidance and support throughout the rehabilitation journey.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews" id="reviews">
+  <div class="section-inner">
+    <p class="eyebrow eyebrow-center">Patients</p>
+    <h2 class="section-title">What our patients say</h2>
+    <p class="reviews-sub">Highly rated by patients in Goregaon West</p>
+
+    <div class="reviews-grid">
+      <div class="review-card placeholder">
+        <div class="review-quote-mark">"</div>
+        <p>Your genuine Google review can appear here.</p>
+      </div>
+      <div class="review-card placeholder">
+        <div class="review-quote-mark">"</div>
+        <p>Your genuine Google review can appear here.</p>
+      </div>
+      <div class="review-card placeholder">
+        <div class="review-quote-mark">"</div>
+        <p>Your genuine Google review can appear here.</p>
+      </div>
+    </div>
+
+    <div class="reviews-cta">
+      <a href="#" class="btn btn-outline" id="googleReviewsLink">View Google Reviews</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPOINTMENT CTA ============ -->
+<section class="appointment-cta">
+  <div class="section-inner appointment-inner">
+    <h2>Ready to take the next step?</h2>
+    <p>Have questions about your pain, injury or rehabilitation? Get in touch with Vijaya's Physio World to discuss your appointment.</p>
+    <div class="appointment-actions">
+      <a href="https://wa.me/919869521900?text=Hello%20Dr.%20Vijaya%2C%20I%20would%20like%20to%20enquire%20about%20an%20appointment%20at%20Vijaya's%20Physio%20World." class="btn btn-primary-inverse" target="_blank" rel="noopener">WhatsApp Us</a>
+      <a href="tel:+919869521900" class="btn btn-outline-inverse">Call Clinic</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section class="location" id="location">
+  <div class="section-inner location-grid">
+    <div class="location-copy">
+      <p class="eyebrow">Find us</p>
+      <h2>Visit Vijaya's Physio World</h2>
+      <p class="location-address">
+        15/113, Unnat Nagar No. 3,<br>
+        Mahatma Gandhi Road,<br>
+        Goregaon West, Mumbai,<br>
+        Maharashtra 400104
+      </p>
+      <p class="location-phone"><a href="tel:+919869521900">+91 98695 21900</a></p>
+
+      <div class="location-actions">
+        <a href="https://www.google.com/maps/search/?api=1&query=Vijaya%27s+Physio+World+Goregaon+West+Mumbai" class="btn btn-outline" target="_blank" rel="noopener">Get Directions</a>
+        <a href="tel:+919869521900" class="btn btn-outline">Call Clinic</a>
+        <a href="https://wa.me/919869521900" class="btn btn-outline" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="location-map">
+      <iframe
+        title="Vijaya's Physio World location map"
+        src="https://www.google.com/maps?q=Vijaya's+Physio+World,+Unnat+Nagar,+Goregaon+West,+Mumbai&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPOINTMENT (HOURS + FORM) ============ -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <p class="eyebrow eyebrow-center">Request an appointment</p>
+    <h2 class="section-title section-title-center">Plan your visit</h2>
+
+    <div class="appointment-grid">
+      <div class="hours-card">
+        <div class="hours-card-head">
+          <span class="hours-icon" data-icon="clock"></span>
+          <h3>Clinic Hours</h3>
+        </div>
+
+        <ul class="hours-list">
+          <li><span>Monday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Tuesday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Wednesday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Thursday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Friday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Saturday</span><span class="hours-value">Add clinic timing</span></li>
+          <li><span>Sunday</span><span class="hours-value">Add clinic timing</span></li>
+        </ul>
+
+        <div class="hours-help">
+          <p>Need help choosing a convenient time?</p>
+          <a href="https://wa.me/919869521900?text=Hello%20Dr.%20Vijaya%2C%20I%20would%20like%20to%20know%20a%20convenient%20time%20for%20an%20appointment." class="btn btn-primary btn-full" target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+
+        <div class="hours-meta">
+          <p><span class="hours-meta-label">Phone</span><a href="tel:+919869521900">+91 98695 21900</a></p>
+          <p><span class="hours-meta-label">Location</span><span>Goregaon West, Mumbai</span></p>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3>Request an Appointment</h3>
+        <p class="form-card-sub">Tell us a little about your visit and our clinic can get back to you.</p>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <label for="cf-name">Name</label>
+            <input type="text" id="cf-name" name="name" required placeholder="Your full name">
+          </div>
+          <div class="form-row">
+            <label for="cf-phone">Phone Number</label>
+            <input type="tel" id="cf-phone" name="phone" required placeholder="10-digit mobile number">
+          </div>
+          <div class="form-row">
+            <label for="cf-date">Preferred Date</label>
+            <input type="date" id="cf-date" name="date">
+          </div>
+          <div class="form-row">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="4" placeholder="Briefly describe your condition or concern"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Request Appointment</button>
+          <p class="form-note" id="formNote"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="section-inner footer-grid">
+    <div class="footer-brand">
+      <span class="brand-mark">VP</span>
+      <div>
+        <strong>Vijaya's Physio World</strong>
+        <p>Physiotherapy &amp; rehabilitation care in Goregaon West, Mumbai</p>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#conditions">Conditions</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <a href="tel:+919869521900">+91 98695 21900</a>
+      <p>Unnat Nagar No. 3, Goregaon West, Mumbai</p>
+      <a href="https://wa.me/919869521900" class="btn btn-primary btn-small" target="_blank" rel="noopener">Book Appointment</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> Vijaya's Physio World. All rights reserved.</p>
+    <p class="footer-credit">Website by <a href="https://wa.me/918857015469" target="_blank" rel="noopener">Himanshu Bakre</a></p>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE ACTION BAR ============ -->
+<div class="mobile-action-bar" id="mobileActionBar">
+  <a href="https://wa.me/919869521900?text=Hello%20Dr.%20Vijaya%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">
+    <span class="mab-icon" data-icon="whatsapp"></span> WhatsApp
+  </a>
+  <a href="tel:+919869521900">
+    <span class="mab-icon" data-icon="call"></span> Call
+  </a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Vijaya%27s+Physio+World+Goregaon+West+Mumbai" target="_blank" rel="noopener">
+    <span class="mab-icon" data-icon="directions"></span> Directions
+  </a>
+</div>
+
+<!-- ============ FLOATING WHATSAPP BUTTON ============ -->
+<a href="https://wa.me/919869521900?text=Hello%20Dr.%20Vijaya%2C%20I%20would%20like%20to%20enquire%20about%20an%20appointment%20at%20Vijaya's%20Physio%20World."
+   class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="mab-icon" data-icon="whatsapp"></span>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
